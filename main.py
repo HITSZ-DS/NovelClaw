@@ -2,7 +2,6 @@
 主程序入口
 """
 import os
-import hashlib
 import datetime, json
 from config import Config
 from workflow.executor import CompositiveExecutor
