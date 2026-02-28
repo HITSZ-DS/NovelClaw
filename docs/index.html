@@ -15,10 +15,13 @@
       <div class="container header-inner">
         <div class="brand">Long-Story Agent</div>
         <nav class="nav">
-          <a href="#features">特性</a>
+          <a href="#abstract">摘要</a>
+          <a href="#contributions">贡献</a>
+          <a href="#method">方法</a>
           <a href="#architecture">架构</a>
-          <a href="#quickstart">快速开始</a>
-          <a href="#demo">效果示例</a>
+          <a href="#evaluation">评估</a>
+          <a href="#quickstart">复现</a>
+          <a href="#demo">示例</a>
           <a href="#repo">仓库</a>
           <a href="#deploy">部署</a>
         </nav>
@@ -30,15 +33,15 @@
       <section class="hero" id="top">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">开源 · 多 Agent · RAG</p>
+            <p class="eyebrow">Open Source · Multi-Agent · RAG</p>
             <h1>协同式 RAG-Agent 长文本生成系统</h1>
             <p class="lead">
-              面向长篇小说与复杂叙事的多 Agent 协作框架，集成动态记忆、静态知识库、
-              一致性检查与实时编辑，稳定输出高质量长文本。
+              本项目面向长篇小说与复杂叙事，提出一个多 Agent 协作框架，结合动态记忆、
+              静态知识库、一致性评估与实时修订机制，以提高长文本生成的连贯性与可控性。
             </p>
             <div class="cta">
-              <a class="btn primary" href="#quickstart">快速开始</a>
-              <a class="btn" href="#architecture">查看架构</a>
+              <a class="btn primary" href="#quickstart">复现实验</a>
+              <a class="btn" href="#method">方法概览</a>
               <a class="btn" href="https://github.com/xiao-zi-chen/Long-Story-agent">GitHub 仓库</a>
             </div>
             <div class="meta">
@@ -48,48 +51,79 @@
           </div>
           <div class="hero-card">
             <div class="stat">
-              <p class="stat-label">核心能力</p>
-              <p class="stat-value">多 Agent 协作 + 记忆增强</p>
+              <p class="stat-label">研究问题</p>
+              <p class="stat-value">长文本的一致性与结构稳定性</p>
             </div>
             <div class="stat">
-              <p class="stat-label">输出场景</p>
-              <p class="stat-value">长篇小说 / 多章节叙事 / 创意写作</p>
+              <p class="stat-label">方法关键词</p>
+              <p class="stat-value">多 Agent · RAG · 记忆 · 评估</p>
             </div>
             <div class="stat">
-              <p class="stat-label">重点机制</p>
-              <p class="stat-value">转折点跟踪 + 一致性评估 + 实时修订</p>
+              <p class="stat-label">应用场景</p>
+              <p class="stat-value">长篇小说 / 章节叙事 / 创意写作</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="features">
+      <section class="section abstract-section" id="abstract">
         <div class="container">
-          <h2>核心特性</h2>
-          <div class="grid features">
+          <h2>摘要</h2>
+          <div class="abstract-card">
+            <p>
+              长文本生成面临结构漂移、角色不一致与主题偏移等问题。我们构建了一个协同式
+              RAG-Agent 系统，将剧情、人物、世界观、检索、评估与写作能力模块化，并通过
+              动态记忆与一致性检测形成闭环，使模型在多轮生成中维持可解释的创作轨迹。
+              系统支持章节化与整篇模式，可通过参数控制长度、节奏与评估频率，并在实际输出中
+              提供可追溯的过程记录与可复现的配置入口。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contributions">
+        <div class="container">
+          <h2>主要贡献</h2>
+          <div class="grid contributions">
             <div class="card">
-              <h3>多 Agent 协作</h3>
-              <p>剧情、人物、世界观、检索、评估、写作分工明确，提升长篇一致性。</p>
+              <h3>协同式多 Agent 结构</h3>
+              <p>将规划、写作、检索、评估解耦为独立 Agent，支持可插拔与分阶段执行。</p>
             </div>
             <div class="card">
-              <h3>动态记忆系统</h3>
-              <p>按章节与轮次写入向量记忆，支持持续检索与上下文强化。</p>
+              <h3>动态记忆与一致性闭环</h3>
+              <p>按章节写入向量记忆，并通过一致性检查与实时修订回写改进内容。</p>
             </div>
             <div class="card">
-              <h3>静态知识库</h3>
-              <p>可导入领域资料，快速扩展世界观与细节密度。</p>
+              <h3>可复现的生成流程</h3>
+              <p>记录大纲、轮次摘要、评估得分与输出文本，便于对比实验与追溯。</p>
             </div>
-            <div class="card">
-              <h3>一致性与转折点</h3>
-              <p>跨章节一致性检测 + 转折点追踪，避免剧情漂移。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="method">
+        <div class="container">
+          <h2>方法概览</h2>
+          <div class="method-grid">
+            <div class="method-step">
+              <span class="step">01</span>
+              <h3>任务分析</h3>
+              <p>解析主题、类型与目标长度，建立可控的生成约束。</p>
             </div>
-            <div class="card">
-              <h3>实时编辑器</h3>
-              <p>自动识别需修订片段，按策略回写内容。</p>
+            <div class="method-step">
+              <span class="step">02</span>
+              <h3>全局与章节大纲</h3>
+              <p>生成全局叙事结构，并分解为章节级执行计划。</p>
             </div>
-            <div class="card">
-              <h3>可控生成</h3>
-              <p>目标长度、章节规划、快速模式、评估间隔等可配置。</p>
+            <div class="method-step">
+              <span class="step">03</span>
+              <h3>多 Agent 生成</h3>
+              <p>写作 Agent 生成文本，检索与世界观 Agent 提供支撑材料。</p>
+            </div>
+            <div class="method-step">
+              <span class="step">04</span>
+              <h3>一致性评估与修订</h3>
+              <p>评估生成内容，自动修订与回写记忆，形成闭环。</p>
             </div>
           </div>
         </div>
@@ -114,9 +148,29 @@
         </div>
       </section>
 
+      <section class="section" id="evaluation">
+        <div class="container">
+          <h2>评估与日志</h2>
+          <div class="grid">
+            <div class="card">
+              <h3>自动评估</h3>
+              <p>从连贯性、情感强度与整体质量等维度进行评估，并记录分数。</p>
+            </div>
+            <div class="card">
+              <h3>过程可追溯</h3>
+              <p>按轮次存储摘要、转折点与一致性问题，便于复盘与对比实验。</p>
+            </div>
+            <div class="card">
+              <h3>实验资料</h3>
+              <p>可结合 <code>benchmark-baseline/</code> 中的论文与日志进行扩展分析。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="quickstart">
         <div class="container">
-          <h2>快速开始</h2>
+          <h2>复现与配置</h2>
           <div class="steps">
             <div>
               <h3>1. 安装依赖</h3>
