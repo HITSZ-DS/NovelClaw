@@ -54,7 +54,7 @@
     Current action: <strong id="phase-note">{{ snapshot.phase_note|default("-", true) }}</strong>
   </p>
   <p class="muted">
-    Chapter progress: <strong id="chapter-progress">{% if snapshot.current_chapter > 0 %}{{ snapshot.current_chapter }}/{{ snapshot.planned_total if snapshot.planned_total > 0 else '?' }}{% else %}-{% endif %}</strong> |
+    Chapter progress: <strong id="chapter-progress">{% if snapshot.planned_total > 0 %}{{ snapshot.current_chapter if snapshot.current_chapter > 0 else 0 }}/{{ snapshot.planned_total }}{% else %}-{% endif %}</strong> |
     Chapter words: <strong id="chapter-words">{{ snapshot.chapter_words }}</strong> |
     Total words: <strong id="total-words">{{ snapshot.total_words }}</strong>
   </p>
@@ -243,8 +243,8 @@
       if (idleEl) idleEl.textContent = snapshot.idle_seconds >= 0 ? String(snapshot.idle_seconds) : "-";
       if (chapterProgressEl) {
         const cur = snapshot.current_chapter || 0;
-        const total = snapshot.planned_total || "?";
-        chapterProgressEl.textContent = cur > 0 ? `${cur}/${total}` : "-";
+        const total = Number(snapshot.planned_total || 0);
+        chapterProgressEl.textContent = total > 0 ? `${cur}/${total}` : "-";
       }
       if (chapterWordsEl) chapterWordsEl.textContent = String(snapshot.chapter_words ?? 0);
       if (totalWordsEl) totalWordsEl.textContent = String(snapshot.total_words ?? 0);

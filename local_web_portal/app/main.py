@@ -41,6 +41,28 @@ from .security import SESSION_SECRET, decrypt_api_key, encrypt_api_key, hash_pas
 from .settings import BASE_DIR, RUNS_DIR, settings
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+
+EVENT_LABELS = {
+    "global_outline": "Global outline",
+    "chapter_outline_ready": "Chapter outlines ready",
+    "chapter_plan": "Chapter plan",
+    "chapter_outline": "Chapter outline",
+    "chapter_length_plan": "Chapter length plan",
+    "chapter_length_warning": "Chapter length warning",
+    "character_setting": "Character setting",
+    "world_setting": "World setting",
+    "memory_snapshot": "Memory snapshot",
+}
+
+MEMORY_COUNT_KEYS = (
+    "texts",
+    "outlines",
+    "characters",
+    "world_settings",
+    "plot_points",
+    "fact_cards",
+)
 
 app = FastAPI(title=settings.app_name)
 app.add_middleware(
@@ -123,7 +145,8 @@ def _tail_text(path: Path, max_chars: int = 12000) -> str:
     if not path.exists():
         return ""
     try:
-        return path.read_text(encoding="utf-8", errors="replace")[-max_chars:]
+        text = path.read_text(encoding="utf-8", errors="replace")[-max_chars:]
+        return ANSI_ESCAPE_RE.sub("", text)
     except Exception:
         return ""
 
@@ -249,6 +272,8 @@ def _parse_progress_log(progress_log_text: str) -> Dict:
         "planned_total": 0,
         "chapter_words": 0,
         "total_words": 0,
+        "phase_note": "",
+        "memory_counts": {k: 0 for k in MEMORY_COUNT_KEYS},
     }
     if not progress_log_text:
         return snapshot
@@ -274,6 +299,53 @@ def _parse_progress_log(progress_log_text: str) -> Dict:
                 snapshot["total_words"] = int(line.split("=", 1)[1].strip())
             except Exception:
                 pass
+        elif line.startswith("[event]"):
+            try:
+                parts = [seg.strip() for seg in line.split("|")]
+                if len(parts) < 2:
+                    continue
+
+                event_name = parts[1]
+                detail_parts: List[str] = []
+                chapter_no = 0
+
+                for seg in parts[2:]:
+                    if seg.startswith("chapter "):
+                        m_ch = re.search(r"chapter\s+(\d+)", seg)
+                        if m_ch:
+                            chapter_no = int(m_ch.group(1))
+                    elif seg:
+                        detail_parts.append(seg)
+
+                detail = " | ".join(detail_parts)
+                if chapter_no > 0:
+                    snapshot["current_chapter"] = max(snapshot["current_chapter"], chapter_no)
+
+                if event_name == "chapter_outline_ready" and snapshot["planned_total"] <= 0:
+                    m_plan = re.search(r"count\s*=\s*(\d+)", detail)
+                    if m_plan:
+                        snapshot["planned_total"] = int(m_plan.group(1))
+
+                if event_name == "memory_snapshot":
+                    detail_map = {
+                        k.strip(): v.strip()
+                        for k, v in (
+                            item.split("=", 1)
+                            for item in detail.split(",")
+                            if "=" in item
+                        )
+                    }
+                    for key in MEMORY_COUNT_KEYS:
+                        if key in detail_map:
+                            try:
+                                snapshot["memory_counts"][key] = int(detail_map[key])
+                            except Exception:
+                                pass
+
+                label = EVENT_LABELS.get(event_name, event_name.replace("_", " "))
+                snapshot["phase_note"] = f"{label}: {detail}" if detail else label
+            except Exception:
+                pass
     return snapshot
 
 
@@ -297,8 +369,6 @@ def _infer_phase(worker_log_text: str) -> str:
     lines = [ln.strip() for ln in worker_log_text.splitlines() if ln.strip()]
     if not lines:
         return "waiting_worker"
-
-    latest = "\n".join(lines[-30:])
     checks = [
         ("Traceback", "error"),
         ("[system] worker started", "worker_started"),
@@ -314,10 +384,38 @@ def _infer_phase(worker_log_text: str) -> str:
         ("[Reward]", "reward_calc"),
         ("[Executor] 已完成计划章节数", "finishing"),
     ]
-    for marker, phase in checks:
-        if marker in latest:
-            return phase
+    for line in reversed(lines[-80:]):
+        for marker, phase in checks:
+            if marker in line:
+                return phase
     return "running"
+
+
+def _infer_action_from_worker_log(worker_log_text: str) -> str:
+    if not worker_log_text:
+        return ""
+    lines = [ln.strip() for ln in worker_log_text.splitlines() if ln.strip()]
+    if not lines:
+        return ""
+
+    noise_prefixes = (
+        "Loading weights:",
+        "Key",
+        "|",
+        "-",
+        "[system] worker started",
+    )
+    for line in reversed(lines[-120:]):
+        if not line:
+            continue
+        if any(line.startswith(p) for p in noise_prefixes):
+            continue
+        if "BertModel LOAD REPORT" in line:
+            continue
+        if line.startswith("UNEXPECTED") or line.startswith("[3m"):
+            continue
+        return line[:180]
+    return ""
 
 
 def _phase_label(phase: str) -> str:
@@ -407,8 +505,21 @@ def _build_progress_snapshot(job: GenerationJob, run_dir: Optional[Path], worker
 
     phase = job.status if terminal else str(status_state.get("stage") or _infer_phase(worker_log_text))
     phase_label = _phase_label(phase)
-    phase_note = str(status_state.get("message") or "")
-    memory_counts = status_state.get("memory_counts") or {}
+    phase_note = str(
+        status_state.get("message")
+        or parsed.get("phase_note")
+        or _infer_action_from_worker_log(worker_log_text)
+        or ""
+    )
+    parsed_memory_counts = parsed.get("memory_counts") or {}
+    status_memory_counts = status_state.get("memory_counts") or {}
+    memory_counts: Dict[str, int] = {}
+    for key in MEMORY_COUNT_KEYS:
+        raw_val = status_memory_counts.get(key, parsed_memory_counts.get(key, 0))
+        try:
+            memory_counts[key] = int(raw_val or 0)
+        except Exception:
+            memory_counts[key] = 0
 
     stalled = False
     stall_reason = ""

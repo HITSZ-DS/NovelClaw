@@ -4,7 +4,7 @@
 
 **A Dynamic-Memory-First Collaborative Agent Framework for Long-Form Creative Ideation and Story Generation**
 
-[Project Page / Paper Showcase](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/) | [Chinese Documentation / 中文文档](README.zh-CN.md)
+[Live Web Portal / 在线使用](https://colong-idea-studio.cloud) | [Project Page / Paper Showcase](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/) | [Chinese Documentation / 中文文档](README.zh-CN.md)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Web%20Portal-009688)
@@ -28,6 +28,11 @@ Compared with workflows that rely heavily on static knowledge bases, this framew
 
 1. **🤝 Collaborative ideation**: before formal writing begins, the agent keeps asking targeted questions to refine the user's idea.
 2. **🧠 Dynamic-memory-driven generation**: outlines, facts, character settings, world settings, and chapter summaries are continuously written back and retrieved during generation.
+
+## 🌐 Online Access
+
+- Live Web Portal: [https://colong-idea-studio.cloud](https://colong-idea-studio.cloud)
+- Academic Project Page: [https://xiao-zi-chen.github.io/CoLong-Idea-Studio/](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
 
 ## 🏛️ Project Page
 

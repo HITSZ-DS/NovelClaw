@@ -1,10 +1,10 @@
-# CoLong Idea Studio
+﻿# CoLong Idea Studio
 
 <div align="center">
 
 **动态记忆优先的协同式长篇创意与小说生成智能体框架**
 
-[Project Page / 论文展示页](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/) | [English Documentation / 英文文档](README.md)
+[在线体验 / Live Portal](https://colong-idea-studio.cloud) | [Project Page / 论文展示页](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/) | [English Documentation / 英文文档](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Web%20Portal-009688)
@@ -29,6 +29,11 @@
 1. **🤝 协同式创意完善**：在正式写作前，由智能体持续追问并细化用户创意。
 2. **🧠 动态记忆驱动生成**：在生成过程中持续回写并检索大纲、事实、人物设定、世界观设定和章节摘要。
 
+## 🌐 在线入口
+
+- 在线 Web 门户： [https://colong-idea-studio.cloud](https://colong-idea-studio.cloud)
+- 科研展示页： [https://xiao-zi-chen.github.io/CoLong-Idea-Studio/](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
+
 ## 🏛️ 论文展示页
 
 若需要查看更偏科研展示风格的项目主页，包括系统概览、工作流图、评测快照与仓库入口，请访问：
@@ -43,7 +48,7 @@
 
 ## ✍️ 方法设计
 
-### 🧠 2) 动态记忆上下文构建
+### 🧠 1) 动态记忆上下文构建
 
 写作提示上下文由以下三部分组成：
 
@@ -51,7 +56,7 @@
 2. 语义检索：从动态记忆向量库中召回相关条目。
 3. 类型聚合：按人物、大纲、世界观、情节与事实卡片进行组织后再注入提示词。
 
-### 🤝 3) 协同式创意完善作为 Agent 过程
+### 🤝 2) 协同式创意完善作为 Agent 过程
 
 创意阶段被实现为**Agent 级协同循环**，而不是简单的前端问答辅助。`Idea Copilot Agent` 会持续追问，直到用户明确确认创意已经足够成熟，可以进入正式写作阶段。
 
