@@ -1,4 +1,4 @@
-﻿# CoLong Idea Studio
+# CoLong Idea Studio
 
 <div align="center">
 
@@ -33,6 +33,14 @@
 
 - 在线 Web 门户： [https://colong-idea-studio.cloud](https://colong-idea-studio.cloud)
 - 科研展示页： [https://xiao-zi-chen.github.io/CoLong-Idea-Studio/](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
+
+## 🖼️ 示例展示
+
+以下是两个界面示例：
+
+![Demo 1](docs/demo1.png)
+
+![Demo 2](docs/demo2.png)
 
 ## 🏛️ 论文展示页
 
