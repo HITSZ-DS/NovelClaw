@@ -177,8 +177,7 @@ start_local.cmd
 
 Why this is the recommended path:
 
-- it creates `.venv` automatically when needed
-- it installs both root and web portal dependencies
+- it checks the Python environment before startup
 - it validates that `local_web_portal.app.main:app` can be imported before startup
 - it avoids common failures caused by the wrong global Python or the wrong global `uvicorn`
 - it disables embedding-model downloads by default during local startup
@@ -206,7 +205,8 @@ Operational notes:
 
 - local startup does not require manually creating `local_web_portal/.env`
 - supported Python target is `3.10+`
-- if an old `.venv` was created with an unsupported Python version, rerun the launcher and recreate the environment
+- dependencies and virtual environment preparation are user-controlled
+- if an old `.venv` was created with an unsupported Python version, recreate the environment manually
 - for detailed local troubleshooting, see [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)
 
 ---
