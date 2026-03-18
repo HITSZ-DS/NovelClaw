@@ -115,6 +115,7 @@ def _provider_env(
         "EVAL_INTERVAL": str(settings.eval_interval),
         "LLM_TIMEOUT_SECONDS": os.getenv("LLM_TIMEOUT_SECONDS", "0"),
         "LLM_MAX_RETRIES": os.getenv("LLM_MAX_RETRIES", "1"),
+        "EMBEDDING_MODEL": "none",
         # Keep default behavior close to original pipeline (full-rag).
         "MEMORY_ONLY_MODE": os.getenv("WEB_MEMORY_ONLY_MODE", "0"),
         "ENABLE_RAG": os.getenv("WEB_ENABLE_RAG", "1"),

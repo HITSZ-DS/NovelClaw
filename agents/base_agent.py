@@ -72,7 +72,7 @@ class BaseAgent(ABC):
         memory_context = ""
         if use_memory and self.memory_system and topic:
             memory_context = self.memory_system.get_relevant_context(
-                query=prompt,
+                query=f"{prompt}\n\n{context or ''}",
                 topic=topic,
                 include_types=self._get_relevant_memory_types()
             )

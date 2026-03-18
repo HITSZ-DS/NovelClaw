@@ -27,7 +27,6 @@ os.environ.setdefault("TRANSFORMERS_NO_TF", "1")
 os.environ.setdefault("TRANSFORMERS_NO_FLAX", "1")
 os.environ.setdefault("USE_TF", "0")
 
-from sentence_transformers import SentenceTransformer
 import numpy as np
 
 
@@ -45,6 +44,12 @@ class DocumentProcessor:
         if embed_name in {"none", "noop", "disable", "disabled"}:
             self.embedding_model = None
         else:
+            try:
+                from sentence_transformers import SentenceTransformer
+            except ImportError as exc:
+                raise ImportError(
+                    "sentence-transformers is required only when EMBEDDING_MODEL is enabled."
+                ) from exc
             self.embedding_model = SentenceTransformer(config.embedding_model)
     
     def split_documents(self, text: str) -> List[str]:
@@ -109,4 +114,3 @@ class DocumentProcessor:
             })
         
         return result
-

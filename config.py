@@ -123,11 +123,25 @@ class Config:
         )
         self.embedding_model: str = os.getenv(
             "EMBEDDING_MODEL",
-            "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+            "none"
         )
         self.chunk_size: int = int(os.getenv("CHUNK_SIZE", "500"))
         self.chunk_overlap: int = int(os.getenv("CHUNK_OVERLAP", "100"))
         self.top_k: int = int(os.getenv("TOP_K", "5"))  # 检索返回的文档数量
+        # Dynamic memory weighting controls
+        self.memory_score_semantic_weight: float = float(os.getenv("MEMORY_SCORE_SEMANTIC_WEIGHT", "0.5"))
+        self.memory_score_importance_weight: float = float(os.getenv("MEMORY_SCORE_IMPORTANCE_WEIGHT", "0.25"))
+        self.memory_score_recency_weight: float = float(os.getenv("MEMORY_SCORE_RECENCY_WEIGHT", "0.15"))
+        self.memory_score_reinforcement_weight: float = float(os.getenv("MEMORY_SCORE_REINFORCEMENT_WEIGHT", "0.10"))
+        self.memory_recency_half_life_days: float = float(os.getenv("MEMORY_RECENCY_HALF_LIFE_DAYS", "14"))
+        self.memory_reinforcement_cap: float = float(os.getenv("MEMORY_REINFORCEMENT_CAP", "12"))
+        self.memory_retrieval_oversample_factor: int = int(os.getenv("MEMORY_RETRIEVAL_OVERSAMPLE_FACTOR", "4"))
+        self.memory_recent_chapter_window: int = int(os.getenv("MEMORY_RECENT_CHAPTER_WINDOW", "1"))
+        self.memory_fact_chapter_window: int = int(os.getenv("MEMORY_FACT_CHAPTER_WINDOW", "2"))
+        self.memory_keep_writer_rounds: bool = _env_flag("MEMORY_KEEP_WRITER_ROUNDS", "0")
+        self.memory_anchor_bonus: float = float(os.getenv("MEMORY_ANCHOR_BONUS", "0.18"))
+        self.memory_anchor_decay_factor: float = float(os.getenv("MEMORY_ANCHOR_DECAY_FACTOR", "0.35"))
+        self.memory_context_char_budget: int = int(os.getenv("MEMORY_CONTEXT_CHAR_BUDGET", "5000"))
         # 静态知识库：每条原始文本最多写入多少个 chunk（降低磁盘占用与索引损坏概率）
         self.static_max_chunks_per_doc: int = int(os.getenv("STATIC_MAX_CHUNKS_PER_DOC", "12"))
         

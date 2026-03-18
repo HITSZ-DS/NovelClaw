@@ -33,8 +33,10 @@ class CompositiveExecutor:
         # 锁定书名，默认用 topic，若大纲里出现《书名》则覆盖
         self.book_title: Optional[str] = None
         
-        # 初始化RAG（动态知识库）
-        self.retriever = Retriever(config, collection_name="knowledge_base")
+        # 关闭 RAG 时不要初始化 Retriever，避免无意义的 embedding/HF 下载
+        self.retriever = None
+        if getattr(config, "enable_rag", False):
+            self.retriever = Retriever(config, collection_name="knowledge_base")
         
         # 仅保留动态 memory：静态知识库禁用
         self.static_kb = None
@@ -105,7 +107,7 @@ class CompositiveExecutor:
         genre = genre or "general"
         style_tags = style_tags or ["immersive", "tight-pacing"]
         # optional initial knowledge into RAG
-        if initial_knowledge:
+        if initial_knowledge and self.retriever:
             self.retriever.add_knowledge(initial_knowledge, {"type": "initial"})
         outline = ""
         if not outline_free:
@@ -246,7 +248,7 @@ You are writing segment {idx+1}/{seg_count} of a long English story. Continue th
                 style_tags = ["delicate"] if self._is_en() else ["细腻"]
         
         # 1. 添加初始知识（如果有）
-        if initial_knowledge:
+        if initial_knowledge and self.retriever:
             self.retriever.add_knowledge(initial_knowledge, {"type": "initial"})
         
         # 2. 任务分析
@@ -462,10 +464,13 @@ You are writing segment {idx+1}/{seg_count} of a long English story. Continue th
                         # 存储情节要点
                         self.memory_system.store_plot_point(content, topic)
                     elif result_type == "writer":
-                        # 存储生成的正文片段，便于后续检索与一致性检查
-                        self.memory_system.store_generated_text(
-                            content, topic, {"source": "writer_round"}
-                        )
+                        # 默认不存中间正文碎片，避免后续章节被早期具体段落污染
+                        if getattr(self.config, "memory_keep_writer_rounds", False):
+                            self.memory_system.store_generated_text(
+                                content,
+                                topic,
+                                {"source": "writer_round", "chapter": self.chapter_counter},
+                            )
             
             # 检测并记录关键转折点（优先基于小说正文，避免把检索/提纲混入）
             print("[TurningPoint] 正在检测关键转折点...")
@@ -1820,12 +1825,18 @@ Current chapter text:
                 f"max={chapter_max_allowed or 0}, topic={topic}\n"
             )
         mem = self.memory_system.memory_index
+        top_memories = self.memory_system.get_priority_snapshot(topic=topic, limit=3)
+        top_summary = "; ".join(
+            f"{item['type']}:{item['title']}({item['dynamic_importance']:.2f})"
+            for item in top_memories
+        )
         self._append_progress_event(
             "memory_snapshot",
             (
                 f"texts={len(mem.get('texts', []))}, outlines={len(mem.get('outlines', []))}, "
                 f"characters={len(mem.get('characters', []))}, world_settings={len(mem.get('world_settings', []))}, "
-                f"plot_points={len(mem.get('plot_points', []))}, fact_cards={len(mem.get('fact_cards', []))}"
+                f"plot_points={len(mem.get('plot_points', []))}, fact_cards={len(mem.get('fact_cards', []))}, "
+                f"top_priority=[{top_summary}]"
             ),
             chapter_no,
         )
