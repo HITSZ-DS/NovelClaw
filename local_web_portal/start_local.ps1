@@ -69,7 +69,7 @@ function Invoke-Python {
   }
 }
 
-$bootstrapPython = Get-PythonCommand
+$bootstrapPython = @(Get-PythonCommand)
 $bootstrapPrefixArgs = @()
 if ($bootstrapPython.Length -gt 1) {
   $bootstrapPrefixArgs = $bootstrapPython[1..($bootstrapPython.Length - 1)]
