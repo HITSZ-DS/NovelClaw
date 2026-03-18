@@ -1,10 +1,10 @@
-$ErrorActionPreference = "Stop"
-
 param(
-  [string]$Host = "127.0.0.1",
+  [string]$BindHost = "127.0.0.1",
   [int]$Port = 8010,
   [switch]$Reload
 )
+
+$ErrorActionPreference = "Stop"
 
 Set-Location (Resolve-Path (Join-Path $PSScriptRoot ".."))
 
@@ -127,12 +127,12 @@ if ($LASTEXITCODE -ne 0) {
 $uvicornArgs = @(
   "-m", "uvicorn",
   "local_web_portal.app.main:app",
-  "--host", $Host,
+  "--host", $BindHost,
   "--port", [string]$Port
 )
 if ($Reload.IsPresent) {
   $uvicornArgs += "--reload"
 }
 
-Write-Host "[run] Starting web portal on http://${Host}:$Port"
+Write-Host "[run] Starting web portal on http://${BindHost}:$Port"
 & $venvPython @uvicornArgs

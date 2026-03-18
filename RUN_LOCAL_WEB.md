@@ -29,7 +29,7 @@ If you already have an old `.venv` created by Python `<3.10`, the launcher will 
 Optional flags:
 
 ```powershell
-.\start_local.ps1 -Host 0.0.0.0 -Port 8010
+.\start_local.ps1 -BindHost 0.0.0.0 -Port 8010
 .\start_local.ps1 -Reload
 ```
 
