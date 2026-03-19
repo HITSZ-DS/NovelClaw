@@ -1,57 +1,132 @@
 # CoLong Idea Studio
 
 <div align="center">
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+">
+    <img src="https://img.shields.io/badge/FastAPI-本地门户-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI 本地门户">
+    <img src="https://img.shields.io/badge/VectorDB-ChromaDB-F97316?style=for-the-badge" alt="ChromaDB">
+    <img src="https://img.shields.io/badge/模式-动态记忆优先-0f766e?style=for-the-badge" alt="动态记忆优先">
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" alt="MIT License"></a>
+  </p>
 
-**面向长篇创作的协同式 Agent 写作框架：先共创想法，再分章生成，并用动态记忆维持一致性。**
+  <h3>面向长篇叙事生成的结构化工作流：协同构思、分章规划、动态记忆回注。</h3>
 
-[在线体验](https://colong-idea-studio.cloud) | [项目展示页](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/) | [English README](README.md) | [本地 Web 启动说明](RUN_LOCAL_WEB.md)
+  <p>
+    CoLong Idea Studio 不是一次性写完的提示词封装，而是把粗糙想法整理成可检查、可追踪、可持续扩写的长篇创作流程。
+  </p>
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![FastAPI](https://img.shields.io/badge/Web-FastAPI-009688)
-![Vector DB](https://img.shields.io/badge/VectorDB-ChromaDB-orange)
-![Mode](https://img.shields.io/badge/模式-动态记忆优先-success)
-![Workflow](https://img.shields.io/badge/流程-分章生成-purple)
+  <p>
+    <a href="https://colong-idea-studio.cloud"><img src="https://img.shields.io/badge/在线门户-立即体验-0f766e?style=flat-square&logo=googlechrome&logoColor=white" alt="在线门户"></a>
+    <a href="https://xiao-zi-chen.github.io/CoLong-Idea-Studio/"><img src="https://img.shields.io/badge/项目页-研究展示-1d4ed8?style=flat-square&logo=githubpages&logoColor=white" alt="项目页"></a>
+    <a href="README.md"><img src="https://img.shields.io/badge/English-README-ef4444?style=flat-square" alt="English README"></a>
+    <a href="RUN_LOCAL_WEB.md"><img src="https://img.shields.io/badge/本地%20Web-启动说明-f59e0b?style=flat-square&logo=readthedocs&logoColor=white" alt="本地 Web 启动说明"></a>
+  </p>
 
+  <p>
+    <a href="#概览">概览</a> |
+    <a href="#视觉预览">视觉预览</a> |
+    <a href="#为什么它更特别">为什么它更特别</a> |
+    <a href="#快速开始">快速开始</a> |
+    <a href="#架构">架构</a> |
+    <a href="#运行产物">运行产物</a>
+  </p>
 </div>
 
-`CoLong Idea Studio` 不是“给我一个题材，直接一口气写完”的一次性生成器。它更像一个用于长篇创作的协作系统：先帮你把创意补完整，再生成全局大纲和章节计划，然后把章节摘要、人物设定、世界观设定、事实卡片等内容持续写回动态记忆，在后续章节继续取回使用。
+<p align="center">
+  <img src="docs/hero.png" alt="CoLong Idea Studio 主视觉图" width="100%">
+</p>
 
-如果你在意长篇小说里的连续性、设定不漂移、章节间前后呼应，以及生成过程是否可观察，这个项目比普通长文本生成方式更合适。
+## 概览
 
-## 为什么它值得被关注
+`CoLong Idea Studio` 是一个以动态记忆为核心的长篇故事生成工作流。它不会让模型直接“一口气写完整本书”，而是把过程拆成协同构思、全局规划、章节规划、章节写作和记忆回写几个阶段。
+
+它尤其适合：
+
+- 长篇小说和连载式叙事
+- 世界观复杂、约束多、角色关系重的故事
+- 人机协同创作流程
+- 面向长文本一致性、记忆机制、Agent 写作的实验和研究
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3>Idea Copilot</h3>
+      <p>系统会持续追问关键问题，直到创意清晰到足以支撑稳定的章节规划和写作。</p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>动态记忆</h3>
+      <p>章节摘要、事实卡片、人物设定、世界规则和情节锚点会被存储、召回，并在后续章节中重新注入。</p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>可观测运行</h3>
+      <p>你可以检查进度日志、章节文件和记忆索引，而不是把生成过程当成黑箱。</p>
+    </td>
+  </tr>
+</table>
+
+## 视觉预览
+
+<p align="center">
+  <img src="docs/readme-triptych-en.png" alt="从创意过载到结构化协作再到稳定叙事" width="100%">
+</p>
+
+CoLong 的核心观点很直接：长篇创作质量不只是靠模型“会写”，而是靠系统能否把创意过载转化为结构化协作，再沉淀成稳定叙事。
+
+## 为什么它更特别
+
+<p align="center">
+  <img src="docs/dynamic-memory.png" alt="动态记忆在摘要、事实卡片、人物档案和章节输出之间流动" width="100%">
+</p>
 
 | 常见长文本生成方式 | CoLong Idea Studio |
 |---|---|
-| 从一个很模糊的想法直接开始写 | 先通过 `Idea Copilot` 反复追问，把想法补完整 |
-| 上下文主要靠一次 prompt | 会把大纲、摘要、设定、事实持续写回动态记忆 |
-| 后面章节容易人设漂移、设定打架 | 用类型化记忆回注，维持人物、世界观、情节承诺的一致性 |
-| 跑起来像黑箱，很难知道系统做了什么 | 运行中可查看 `progress.log`、章节文件和记忆索引 |
+| 从模糊想法直接开写 | 先通过 `Idea Copilot` 反复澄清思路 |
+| 依赖一次 prompt 能装下多少上下文 | 使用类型化记忆产物和近期章节输出组装上下文 |
+| 后续章节容易漂移、打架、遗忘前文承诺 | 回注摘要、事实卡片、人物档案和世界规则 |
+| 生成过程难以解释 | 暴露 `progress.log`、章节文件和记忆索引 |
+| 更像一次性提示词输出 | 更像分阶段推进的叙事生产流水线 |
 
-## 界面预览
+### 动态记忆优先，具体体现在哪
 
-<p align="center">
-  <img src="docs/demo1.png" alt="CoLong 仪表盘界面" width="48%">
-  <img src="docs/demo2.png" alt="CoLong 任务详情界面" width="48%">
-</p>
+- 每章摘要会变成后续章节可复用的记忆
+- 事实卡片用于固定关键设定和剧情承诺
+- 人物设定与世界观设定会作为独立类型写回记忆
+- 写新章节时拉取的是“近期输出 + 结构化记忆”，不是只依赖最后一轮 prompt
 
-## 你可以用它做什么
+## 工作流
 
-- 在正式写作前，用协同式 `Idea Copilot` 把模糊创意补成更稳定的写作 brief。
-- 生成按章节推进的长篇小说或连续故事。
-- 在运行时查看大纲生成、章节规划、章节长度目标、记忆写回等过程信号。
-- 通过 CLI 或本地多用户 Web 门户使用整套流程。
-- 为每次运行单独隔离动态记忆，便于复现实验和排查问题。
+<table>
+  <tr>
+    <td width="25%" valign="top">
+      <h4>1. 澄清</h4>
+      <p>从题材、主题、设定或情节种子出发，通过协同追问把创意补完整。</p>
+    </td>
+    <td width="25%" valign="top">
+      <h4>2. 规划</h4>
+      <p>生成全局大纲和章节级计划，先把长篇写作的骨架搭起来。</p>
+    </td>
+    <td width="25%" valign="top">
+      <h4>3. 写作</h4>
+      <p>每一章都从近期输出和类型化动态记忆中拼装上下文，再进行草稿生成。</p>
+    </td>
+    <td width="25%" valign="top">
+      <h4>4. 强化</h4>
+      <p>把新摘要、新设定和关键事实写回记忆，让后续章节继续继承前文约束。</p>
+    </td>
+  </tr>
+</table>
 
-## 特别适合这些场景
+## 适合的场景
 
-- 长篇小说、连载故事、章节化叙事
-- 世界观复杂、角色较多的创作项目
-- 人机协同创作流程
-- 动态记忆 / Agent 写作 / 长文本一致性相关实验
+- 网络连载和章节化长篇创作
+- 科幻、奇幻等高世界观密度叙事
+- 需要作者持续介入控制方向的人机协同写作
+- 研究叙事记忆、章节一致性和 Agent 生成流程的工程实验
 
 ## 快速开始
 
-### 方案 A：本地 Web 门户
+<details open>
+<summary><b>方案 A：本地 Web 门户</b></summary>
 
 Windows 下推荐这样启动：
 
@@ -70,13 +145,6 @@ python -m pip install -r local_web_portal\requirements.txt
 http://127.0.0.1:8010
 ```
 
-为什么推荐这个入口：
-
-- 会先检查 Python 版本是否满足 `3.10+`
-- 会先验证 `local_web_portal.app.main:app` 是否能正常导入
-- 能避免全局 Python 或全局 `uvicorn` 用错导致的启动问题
-- 本地启动时默认关闭 embedding 下载，体验更稳定
-
 可选参数：
 
 ```powershell
@@ -84,9 +152,19 @@ http://127.0.0.1:8010
 .\start_local.ps1 -Reload
 ```
 
-### 方案 B：CLI
+为什么推荐这个入口：
 
-运行前，先在项目根目录配置 `.env`，或直接写入环境变量：
+- 启动前会检查 Python 版本
+- 会先验证本地 FastAPI 入口是否可导入
+- 能减少解释器或 `uvicorn` 指向错误带来的问题
+- 本地体验更稳定，排错路径也更清晰
+
+</details>
+
+<details>
+<summary><b>方案 B：CLI</b></summary>
+
+先在项目根目录创建 `.env`，或直接配置环境变量：
 
 ```text
 LLM_API_KEY=your_api_key
@@ -110,25 +188,44 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-## 它是怎么工作的
+</details>
 
-1. 用户先提供一个题材、设定、主题或剧情种子。
-2. `Idea Copilot Agent` 持续追问，直到创意足够清晰，可以进入正式写作。
-3. 系统生成全局大纲和章节级计划。
-4. 写每一章时，会把最近摘要、事实卡片、大纲、人物设定、世界观设定等组合成动态记忆上下文。
-5. 新章节的摘要和事实又会写回记忆，供后续章节继续使用。
-6. 运行过程中会落盘日志和章节文件，让整个过程可检查、可追踪。
+## 你会得到什么
 
-## 核心能力
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>创作流程能力</h3>
+      <ul>
+        <li>协同式创意澄清</li>
+        <li>全局大纲生成</li>
+        <li>章节级规划</li>
+        <li>长篇章节写作</li>
+      </ul>
+    </td>
+    <td width="50%" valign="top">
+      <h3>可检查系统输出</h3>
+      <ul>
+        <li>运行中的进度日志</li>
+        <li>按 run 保存的章节产物</li>
+        <li>按 run 保存的动态记忆索引</li>
+        <li>持久化的规划和设定类产物</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-- `协同式创意完善`：不是表单问答，而是真正的 Agent 追问循环。
-- `动态记忆优先`：相比静态知识库，更强调写作过程中的记忆写回与再利用。
-- `类型化记忆装配`：人物、世界观、大纲、事实卡片会按类型组织后再注入 prompt。
-- `可观测进度日志`：可以看到大纲、计划、长度目标、记忆快照、章节推进等中间状态。
+## 架构
 
-## 关键运行产物
+<p align="center">
+  <img src="docs/workflow-diagram-colong-idea-studio.png" alt="CoLong Idea Studio 工作流图" width="94%">
+</p>
 
-调试和理解系统时，最值得看的文件通常是：
+整个架构把规划、写作、检索、存储和回注闭环连接起来，让后续章节持续继承前文已经形成的叙事承诺，而不是越写越散。
+
+## 运行产物
+
+调试或理解一次运行时，最值得看的文件通常是：
 
 ```text
 runs/<run_id>/progress.log
@@ -137,56 +234,52 @@ runs/<run_id>/chapters/
 vector_db/memory/run_<run_id>/memory_index.json
 ```
 
-`progress.log` 里的典型事件包括：
+`progress.log` 中比较关键的事件包括：
 
 | 事件 | 含义 |
 |---|---|
 | `global_outline` | 全局大纲已落盘 |
 | `chapter_outline_ready` | 章节大纲已准备完成 |
 | `chapter_plan` | 当前章节写作计划 |
-| `chapter_length_plan` | 当前章节目标长度及其推断来源 |
+| `chapter_length_plan` | 当前章节目标长度及其来源 |
 | `memory_snapshot` | 动态记忆快照 |
-| `character_setting` / `world_setting` | 人物或世界观设定写回记忆 |
+| `character_setting` / `world_setting` | 人物设定或世界观设定已写回记忆 |
 
-## 系统流程图
-
-![CoLong Idea Studio Workflow Diagram](docs/workflow-diagram-colong-idea-studio.png)
-
-整体流程是一个闭环：规划、写作、检索、存储、回注。这样后续章节会持续受到前文已形成设定和叙事承诺的约束，而不是越写越散。
-
-## 仓库结构
+<details>
+<summary><b>仓库结构</b></summary>
 
 ```text
 .
-|-- agents/                # 写作、检索、协同创意相关 Agent
+|-- agents/                # 写作、检索、创意协同相关 Agent
 |-- workflow/              # analyzer / organizer / executor
 |-- rag/                   # 动态记忆与检索逻辑
 |-- utils/                 # LLM 客户端与通用工具
 |-- local_web_portal/      # 本地多用户 FastAPI 门户
-|-- docs/                  # 图示、截图与项目页素材
+|-- docs/                  # 图示、截图和项目素材
 |-- config.py              # 配置中心
 `-- main.py                # CLI 入口
 ```
 
-## 部署建议
+</details>
 
-- 部署时优先上传源码和必要文档，不要把历史运行产物一起带上去。
-- `runs/*`、`vector_db/*`、`.venv/*`、`__pycache__/*` 这类内容建议排除。
-- API Key 和密钥类配置应放在真实部署环境中，不要直接提交到仓库。
-- 如果对公网开放 Web 门户，建议放在 HTTPS 和反向代理之后。
+<details>
+<summary><b>部署建议</b></summary>
 
-更细的运维说明可参考 [DEPLOY_WHITELIST.md](DEPLOY_WHITELIST.md) 和 [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)。
+- 只上传源码和必要文档
+- 不要部署历史运行产物，例如 `runs/*`、`vector_db/*`、`.venv/*`、`__pycache__/*`
+- 密钥应保存在真实部署环境中，不要直接提交到仓库
+- 如果要公开 Web 门户，建议放在 HTTPS 和反向代理之后
+
+详见 [DEPLOY_WHITELIST.md](DEPLOY_WHITELIST.md) 和 [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)。
+
+</details>
 
 ## 更多文档
 
 - 英文 README: [README.md](README.md)
-- 学术展示页: [xiao-zi-chen.github.io/CoLong-Idea-Studio](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
+- 项目展示页: [xiao-zi-chen.github.io/CoLong-Idea-Studio](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
 - 本地门户启动说明: [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)
 - 许可证: [MIT](LICENSE)
-
-## 许可证
-
-本项目采用 [MIT License](LICENSE)。
 
 ## 引用
 
