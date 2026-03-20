@@ -9,14 +9,14 @@
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" alt="MIT License"></a>
   </p>
 
-  <h3>Structured long-form story generation with collaborative ideation, chapter planning, and dynamic memory reinjection.</h3>
+  <h3>✨ Structured long-form story generation with collaborative ideation, chapter planning, and dynamic memory reinjection.</h3>
 
   <p>
-    CoLong Idea Studio turns rough ideas into inspectable, chaptered fiction pipelines instead of one-shot prompt outputs. <code>(•̀ᴗ•́)و</code>
+    💡 CoLong Idea Studio turns rough ideas into inspectable, chaptered fiction pipelines instead of one-shot prompt outputs. 😊
   </p>
 
   <p>
-    <b>Try it online now:</b> <a href="https://colong-idea-studio.cloud">colong-idea-studio.cloud</a> <code>✦◝(⁰▿⁰)◜✦</code>
+    <b>🚀 Try it online now:</b> <a href="https://colong-idea-studio.cloud">colong-idea-studio.cloud</a> 🚀✨🌐
   </p>
 
   <p>
@@ -40,46 +40,46 @@
   <img src="docs/hero.png" alt="CoLong Idea Studio hero image" width="100%">
 </p>
 
-> **Live Demo**
-> Visit **[colong-idea-studio.cloud](https://colong-idea-studio.cloud)** if you want the fastest way to try CoLong without missing the online portal. `ヽ(•‿•)ノ`
+> 🚀 **Live Demo**
+> 👀 Visit **[colong-idea-studio.cloud](https://colong-idea-studio.cloud)** if you want the fastest way to try CoLong without missing the online portal.
 
-## Overview `(•̀ᴗ•́)و`
+## Overview 🌟
 
 `CoLong Idea Studio` is a dynamic-memory-first workflow for long-form fiction generation. Instead of asking an LLM to write everything in one pass, it separates the process into collaborative ideation, global planning, chapter planning, chapter drafting, and memory write-back.
 
-That makes it a better fit for `(*•̀ㅂ•́)و`:
+That makes it a better fit for builders and writers who want more control. 🎯
 
-- long novels and serialized fiction
-- worldbuilding-heavy stories with recurring facts and constraints
-- human-in-the-loop co-writing workflows
-- experiments on memory-aware and agentic long-text generation
+- 📚 long novels and serialized fiction
+- 🌍 worldbuilding-heavy stories with recurring facts and constraints
+- 🤝 human-in-the-loop co-writing workflows
+- 🧪 experiments on memory-aware and agentic long-text generation
 
 <table>
   <tr>
     <td width="33%" valign="top">
-      <h3>Idea Copilot</h3>
+      <h3>🤝 Idea Copilot</h3>
       <p>The system keeps asking targeted questions until the premise is specific enough to support a stable writing plan.</p>
     </td>
     <td width="33%" valign="top">
-      <h3>Dynamic Memory</h3>
+      <h3>🧠 Dynamic Memory</h3>
       <p>Summaries, fact cards, characters, world settings, and plot anchors are stored, recalled, and reinjected across chapters.</p>
     </td>
     <td width="33%" valign="top">
-      <h3>Observable Runs</h3>
+      <h3>👀 Observable Runs</h3>
       <p>You can inspect progress logs, chapter files, and memory artifacts instead of treating generation like a black box.</p>
     </td>
   </tr>
 </table>
 
-## Visual Tour `٩(ˊᗜˋ*)و`
+## Visual Tour 👀
 
 <p align="center">
   <img src="docs/readme-triptych-en.png" alt="From creative overload to structured collaboration to stable narratives" width="100%">
 </p>
 
-CoLong is designed around a simple claim: long-form writing quality improves when the system helps you move from raw creative overload to structured collaboration and then to stable narratives. `(*^▽^*)`
+CoLong is designed around a simple claim: long-form writing quality improves when the system helps you move from raw creative overload to structured collaboration and then to stable narratives. ✨
 
-## Why It Stands Out `✧(｡•̀ᴗ-)✧`
+## Why It Stands Out ✨
 
 <p align="center">
   <img src="docs/dynamic-memory.png" alt="Dynamic memory flow across summaries, fact cards, profiles, and chapter outputs" width="100%">
@@ -93,14 +93,14 @@ CoLong is designed around a simple claim: long-form writing quality improves whe
 | Generation is hard to inspect | Exposes `progress.log`, chapter files, and memory index data |
 | Feels like one-pass prompting | Feels like a staged narrative production pipeline |
 
-### Dynamic-Memory-First, In Practice `ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧`
+### Dynamic-Memory-First, In Practice 🧠
 
-- chapter summaries become reusable memory for later chapters
-- fact cards preserve concrete story commitments
-- character and world settings are written back as separate typed artifacts
-- chapter drafting pulls from recent outputs plus structured memory, not just the latest prompt
+- 📝 chapter summaries become reusable memory for later chapters
+- 📌 fact cards preserve concrete story commitments
+- 👤 character and world settings are written back as separate typed artifacts
+- 🔁 chapter drafting pulls from recent outputs plus structured memory, not just the latest prompt
 
-## Workflow `╭( ･ㅂ･)و`
+## Workflow 🔄
 
 <table>
   <tr>
@@ -123,19 +123,19 @@ CoLong is designed around a simple claim: long-form writing quality improves whe
   </tr>
 </table>
 
-## Best Use Cases `(*^_^*)`
+## Best Use Cases 🎯
 
-- serialized web fiction
-- long-form sci-fi or fantasy with dense world rules
-- collaborative authoring workflows where humans steer the premise and chapters
-- research and engineering work on narrative memory, chapter coherence, and agentic generation
+- 📖 serialized web fiction
+- 🚀 long-form sci-fi or fantasy with dense world rules
+- 🤝 collaborative authoring workflows where humans steer the premise and chapters
+- 🧪 research and engineering work on narrative memory, chapter coherence, and agentic generation
 
-## Quick Start `ᕕ( ᐛ )ᕗ`
+## Quick Start 🚀
 
 <details open>
-<summary><b>Option A: Local Web Portal</b></summary>
+<summary><b>🌐 Option A: Local Web Portal</b></summary>
 
-Recommended on Windows:
+💻 Recommended on Windows:
 
 ```powershell
 python -m venv .venv
@@ -146,38 +146,38 @@ python -m pip install -r local_web_portal\requirements.txt
 .\start_local.ps1
 ```
 
-Open:
+🌐 Open:
 
 ```text
 http://127.0.0.1:8010
 ```
 
-Or skip local setup and open the hosted portal:
+⚡ Or skip local setup and open the hosted portal:
 
 ```text
 https://colong-idea-studio.cloud
 ```
 
-Optional flags:
+🛠️ Optional flags:
 
 ```powershell
 .\start_local.ps1 -BindHost 0.0.0.0 -Port 8010
 .\start_local.ps1 -Reload
 ```
 
-Why this path is recommended:
+✅ Why this path is recommended:
 
-- checks Python compatibility before boot
-- validates the local FastAPI app entry before startup
-- avoids common wrong-interpreter and wrong-`uvicorn` issues
-- keeps local startup behavior more predictable
+- ✅ checks Python compatibility before boot
+- ✅ validates the local FastAPI app entry before startup
+- ✅ avoids common wrong-interpreter and wrong-`uvicorn` issues
+- ✅ keeps local startup behavior more predictable
 
 </details>
 
 <details>
-<summary><b>Option B: CLI</b></summary>
+<summary><b>⌨️ Option B: CLI</b></summary>
 
-Create a root `.env` or export environment variables:
+🔐 Create a root `.env` or export environment variables:
 
 ```text
 LLM_API_KEY=your_api_key
@@ -185,13 +185,13 @@ LLM_PROVIDER=deepseek
 MODEL_NAME=deepseek-chat
 ```
 
-Accepted key aliases:
+🗝️ Accepted key aliases:
 
 - `DEEPSEEK_API_KEY`
 - `OPENAI_API_KEY`
 - `CODEX_API_KEY`
 
-Then run:
+▶️ Then run:
 
 ```powershell
 python -m venv .venv
@@ -203,12 +203,12 @@ python main.py
 
 </details>
 
-## What You Get `(*•̀ᴗ•́*)و ̑̑`
+## What You Get 🎁
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h3>Creative Workflow</h3>
+      <h3>🎨 Creative Workflow</h3>
       <ul>
         <li>Collaborative idea refinement</li>
         <li>Global outline generation</li>
@@ -217,7 +217,7 @@ python main.py
       </ul>
     </td>
     <td width="50%" valign="top">
-      <h3>Inspectable System Output</h3>
+      <h3>🔍 Inspectable System Output</h3>
       <ul>
         <li>Progress logs during runtime</li>
         <li>Chapter output files per run</li>
@@ -228,7 +228,7 @@ python main.py
   </tr>
 </table>
 
-## Architecture `☆_☆`
+## Architecture 🧠
 
 <p align="center">
   <img src="docs/workflow-diagram-colong-idea-studio.png" alt="CoLong Idea Studio workflow diagram" width="94%">
@@ -236,7 +236,7 @@ python main.py
 
 The architecture closes the loop between planning, writing, retrieval, storage, and reinjection so later chapters inherit earlier narrative commitments instead of drifting away from them.
 
-## Runtime Artifacts `૮ ˶ᵔ ᵕ ᵔ˶ ა`
+## Runtime Artifacts 📦
 
 These are the most useful files when inspecting or debugging a run:
 
@@ -287,12 +287,12 @@ See [DEPLOY_WHITELIST.md](DEPLOY_WHITELIST.md) and [RUN_LOCAL_WEB.md](RUN_LOCAL_
 
 </details>
 
-## Documentation `ヾ(•ω•)o`
+## Documentation 📚
 
-- Chinese docs: [README.zh-CN.md](README.zh-CN.md)
-- Research-style project page: [xiao-zi-chen.github.io/CoLong-Idea-Studio](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
-- Local portal guide: [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)
-- License: [MIT](LICENSE)
+- 🇨🇳 Chinese docs: [README.zh-CN.md](README.zh-CN.md)
+- 🖼️ Research-style project page: [xiao-zi-chen.github.io/CoLong-Idea-Studio](https://xiao-zi-chen.github.io/CoLong-Idea-Studio/)
+- 🌐 Local portal guide: [RUN_LOCAL_WEB.md](RUN_LOCAL_WEB.md)
+- ⚖️ License: [MIT](LICENSE)
 
 ## Citation
 
