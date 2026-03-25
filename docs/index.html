@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="CoLong Idea Studio - Dynamic-Memory-First Collaborative Agent for Long-Form Story Generation">
+  <meta name="description" content="CoLong Idea Studio is a dynamic-memory-first collaborative agent framework for long-form creative ideation and story generation, with project-page observability and deployment-ready documentation.">
+  <meta name="keywords" content="long-form generation, collaborative agent, dynamic memory, story generation, creative ideation, progress log, academic project page">
+  <meta name="author" content="xiao-zi-chen">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoLong Idea Studio">
+  <meta property="og:title" content="CoLong Idea Studio">
+  <meta property="og:description" content="A dynamic-memory-first collaborative agent framework for long-form creative ideation and story generation.">
+  <meta property="og:url" content="https://xiao-zi-chen.github.io/CoLong-Idea-Studio/">
+  <meta property="og:image" content="https://xiao-zi-chen.github.io/CoLong-Idea-Studio/workflow-diagram-colong-idea-studio.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoLong Idea Studio">
+  <meta name="twitter:description" content="Dynamic-memory-first collaborative agent workflow for long-form creative ideation and story generation.">
+  <meta name="twitter:image" content="https://xiao-zi-chen.github.io/CoLong-Idea-Studio/workflow-diagram-colong-idea-studio.png">
+
+  <meta name="theme-color" content="#184e77">
+
+  <title>CoLong Idea Studio | Academic Project Page</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="print.css" media="print">
+
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero publication-header colong-hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="eyebrow-row">
+                <span class="eyebrow-chip">Dynamic Memory First</span>
+                <span class="eyebrow-chip">Collaborative Agent</span>
+                <span class="eyebrow-chip">Long-Form Creativity</span>
+              </div>
+              <h1 class="title is-1 publication-title">CoLong Idea Studio</h1>
+              <p class="subtitle is-4 publication-subtitle">A Dynamic-Memory-First Collaborative Agent Framework for Long-Form Creative Ideation and Story Generation</p>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://github.com/xiao-zi-chen" target="_blank" rel="noopener noreferrer">xiao-zi-chen</a>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Independent Research</span>
+                <span class="author-block">2026</span>
+              </div>
+
+              <div class="hero-note">
+                A research-facing system for collaborative idea refinement, chapter planning, dynamic memory retrieval, and controllable long-form generation.
+              </div>
+
+              <div class="column has-text-centered publication-links-wrap">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://github.com/HITSZ-DS/CoLong-Idea-Studio" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://colong-idea-studio.cloud" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-globe"></i></span>
+                      <span>Live Portal</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="../README.md" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-book"></i></span>
+                      <span>English README</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="../README.zh-CN.md" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-language"></i></span>
+                      <span>中文文档</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#workflow" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-project-diagram"></i></span>
+                      <span>Workflow</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#evaluation" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-chart-line"></i></span>
+                      <span>Evaluation</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#star-growth" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-star"></i></span>
+                      <span>Star Growth</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="columns is-multiline is-centered stat-grid">
+                <div class="column is-4-desktop is-6-tablet">
+                  <div class="mini-stat-card">
+                    <div class="mini-stat-value">Agentic</div>
+                    <div class="mini-stat-label">Collaborative ideation loop before writing</div>
+                  </div>
+                </div>
+                <div class="column is-4-desktop is-6-tablet">
+                  <div class="mini-stat-card">
+                    <div class="mini-stat-value">Memory-First</div>
+                    <div class="mini-stat-label">Outlines, facts, world settings, and chapter summaries</div>
+                  </div>
+                </div>
+                <div class="column is-4-desktop is-6-tablet">
+                  <div class="mini-stat-card">
+                    <div class="mini-stat-value">Observable</div>
+                    <div class="mini-stat-label">Progress log exposes hidden planning and memory signals</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="overview">
+      <div class="container is-max-desktop">
+        <div class="columns is-variable is-6">
+          <div class="column is-7-desktop">
+            <h2 class="title is-3">Overview</h2>
+            <div class="content has-text-justified">
+              <p>
+                <strong>CoLong Idea Studio</strong> targets long-form, chaptered, and high-consistency creative writing tasks. The framework is organized around a dynamic-memory-first generation loop, where planning artifacts, chapter summaries, character settings, world settings, and fact cards are continuously written back and later retrieved as contextual constraints.
+              </p>
+              <p>
+                In addition to generation itself, the project emphasizes <strong>collaborative ideation</strong>. Before the drafting phase begins, the system engages the user in an iterative clarification process so that vague premises can be transformed into a more stable creative brief. This improves downstream coherence, reduces prompt underspecification, and better aligns the system with human-centered creative workflows.
+              </p>
+            </div>
+          </div>
+          <div class="column is-5-desktop">
+            <div class="info-panel">
+              <h3 class="title is-5">Project Links</h3>
+              <ul class="feature-list">
+                <li><a href="https://github.com/HITSZ-DS/CoLong-Idea-Studio" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+                <li><a href="https://colong-idea-studio.cloud" target="_blank" rel="noopener noreferrer">Online Web Portal</a></li>
+                <li><a href="../README.md">English README</a></li>
+                <li><a href="../README.zh-CN.md">Chinese README</a></li>
+                <li><a href="http://127.0.0.1:8010" target="_blank" rel="noopener noreferrer">Local Web Portal (127.0.0.1:8010)</a></li>
+              </ul>
+              <div class="callout-box">
+                <strong>Current focus:</strong> collaborative ideation, dynamic-memory-guided story generation, progress-log observability, and deployment-ready packaging.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contributions">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Core Contributions</h2>
+        <div class="columns is-multiline contribution-grid">
+          <div class="column is-6-desktop">
+            <div class="contribution-card">
+              <div class="contribution-icon"><i class="fas fa-comments"></i></div>
+              <h3 class="title is-5">Collaborative Ideation Agent</h3>
+              <p>The idea-copilot procedure is implemented as a genuine agent loop that keeps asking targeted questions until the user explicitly confirms the concept is ready.</p>
+            </div>
+          </div>
+          <div class="column is-6-desktop">
+            <div class="contribution-card">
+              <div class="contribution-icon"><i class="fas fa-brain"></i></div>
+              <h3 class="title is-5">Dynamic Memory Priority</h3>
+              <p>The system prioritizes dynamic memory over static retrieval, storing and recalling chapter text, outlines, fact cards, character settings, and world settings.</p>
+            </div>
+          </div>
+          <div class="column is-6-desktop">
+            <div class="contribution-card">
+              <div class="contribution-icon"><i class="fas fa-stream"></i></div>
+              <h3 class="title is-5">Progress-Log Observability</h3>
+              <p>Runtime logs expose global outline creation, chapter plans, chapter outlines, inferred length targets, memory snapshots, and setting writes.</p>
+            </div>
+          </div>
+          <div class="column is-6-desktop">
+            <div class="contribution-card">
+              <div class="contribution-icon"><i class="fas fa-pen-nib"></i></div>
+              <h3 class="title is-5">Completion-First Chapter Execution</h3>
+              <p>The primary objective is to complete planned chapters rather than stopping early when an external evaluator score happens to cross a threshold.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="workflow">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">System Workflow</h2>
+        <p class="section-intro has-text-centered">
+          The workflow figure below summarizes the full trajectory from idea refinement to outline planning, chapter execution, dynamic-memory writeback, and subsequent contextual reinjection.
+        </p>
+        <div class="publication-banner figure-frame">
+          <img src="workflow-diagram-colong-idea-studio.png" alt="CoLong Idea Studio workflow diagram">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methodology">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Methodology</h2>
+        <div class="columns is-variable is-5">
+          <div class="column is-4-desktop">
+            <div class="method-card">
+              <span class="method-index">01</span>
+              <h3 class="title is-5">Outline-Grounded Length Steering</h3>
+              <p>Chapter length is treated as a prompt-level target inferred from outline semantics, not as a simplistic hard cap detached from narrative structure.</p>
+            </div>
+          </div>
+          <div class="column is-4-desktop">
+            <div class="method-card">
+              <span class="method-index">02</span>
+              <h3 class="title is-5">Typed Dynamic Memory Assembly</h3>
+              <p>Retrieved context is grouped by semantic role, including outlines, facts, characters, and world settings, before being injected back into generation prompts.</p>
+            </div>
+          </div>
+          <div class="column is-4-desktop">
+            <div class="method-card">
+              <span class="method-index">03</span>
+              <h3 class="title is-5">User-Confirmed Ideation Exit</h3>
+              <p>The collaborative ideation loop terminates only when the user explicitly confirms readiness, making the transition into drafting both intentional and inspectable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="memory-log">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Dynamic Memory and Progress Log</h2>
+        <div class="columns is-variable is-6">
+          <div class="column is-6-desktop">
+            <div class="info-panel tall-panel">
+              <h3 class="title is-5">Memory Buckets</h3>
+              <ul class="feature-list compact-list">
+                <li><code>texts</code></li>
+                <li><code>outlines</code></li>
+                <li><code>characters</code></li>
+                <li><code>world_settings</code></li>
+                <li><code>plot_points</code></li>
+                <li><code>fact_cards</code></li>
+              </ul>
+              <p class="muted-copy">These structured buckets are maintained in <code>memory_index.json</code> and serve as lightweight narrative anchors across chapters.</p>
+            </div>
+          </div>
+          <div class="column is-6-desktop">
+            <div class="info-panel tall-panel">
+              <h3 class="title is-5">Representative Log Events</h3>
+              <div class="log-sample">
+                <div><code>global_outline</code></div>
+                <div><code>chapter_outline_ready</code></div>
+                <div><code>chapter_plan</code></div>
+                <div><code>chapter_length_plan</code></div>
+                <div><code>character_setting</code></div>
+                <div><code>world_setting</code></div>
+                <div><code>memory_snapshot</code></div>
+              </div>
+              <p class="muted-copy">The logging layer reveals hidden planning and memory signals, making long-form generation easier to debug and inspect.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evaluation">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Evaluation Snapshot</h2>
+        <p class="section-intro has-text-centered">
+          The current project page retains an evaluation-style visualization for research presentation while the main system focus has shifted toward collaborative ideation quality, generation observability, and dynamic-memory consistency.
+        </p>
+        <div class="publication-banner figure-frame narrow-frame">
+          <img src="auto-eval.png" alt="Automatic evaluation snapshot">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="deployment">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Deployment and Usage Notes</h2>
+        <div class="columns is-variable is-5">
+          <div class="column is-6-desktop">
+            <div class="contribution-card align-left">
+              <h3 class="title is-5">Runtime Entry Points</h3>
+              <p><strong>CLI:</strong> <code>python main.py</code></p>
+              <p><strong>Web Portal:</strong> <code>python -m uvicorn local_web_portal.app.main:app --host 0.0.0.0 --port 8010</code></p>
+              <p><strong>Portal Goal:</strong> support collaborative ideation, long-form planning, and chapter generation for multi-user deployment.</p>
+            </div>
+          </div>
+          <div class="column is-6-desktop">
+            <div class="contribution-card align-left">
+              <h3 class="title is-5">Recommended Packaging Principle</h3>
+              <p>For server deployment, keep only runtime-required files and exclude historical outputs, local caches, transient vector data, and environment artifacts whenever possible.</p>
+              <p>This reduces repository noise, improves cold-start clarity, and better matches a reproducible research-demo workflow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="star-growth">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">Star Growth</h2>
+          <a class="copy-bibtex-btn" href="https://star-history.com/#HITSZ-DS/CoLong-Idea-Studio&Date" target="_blank" rel="noopener noreferrer" title="Open full star history chart">
+            <i class="fas fa-external-link-alt"></i>
+            <span class="copy-text">Open Full Chart</span>
+          </a>
+        </div>
+        <p class="section-intro">
+          Repository momentum is often a more useful signal here than a citation block, so the project page now highlights GitHub star growth instead.
+        </p>
+        <div class="publication-banner figure-frame">
+          <a href="https://star-history.com/#HITSZ-DS/CoLong-Idea-Studio&Date" target="_blank" rel="noopener noreferrer">
+            <img src="https://api.star-history.com/svg?repos=HITSZ-DS/CoLong-Idea-Studio&type=Date" alt="Star growth chart for HITSZ-DS/CoLong-Idea-Studio">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page is adapted from the
+                <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>
+                and has been reworked for the CoLong Idea Studio project page.
+              </p>
+              <p>
+                Repository: <a href="https://github.com/HITSZ-DS/CoLong-Idea-Studio" target="_blank" rel="noopener noreferrer">HITSZ-DS/CoLong-Idea-Studio</a>
+              </p>
+              <p>
+                Live Portal: <a href="https://colong-idea-studio.cloud" target="_blank" rel="noopener noreferrer">colong-idea-studio.cloud</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
